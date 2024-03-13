@@ -1,5 +1,6 @@
 gunicorn
 Flask
-tensorflow
 numpy
+tensorflow
 colorthief
+Werkzeug
