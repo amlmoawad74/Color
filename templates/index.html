@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Predictor</title>
+</head>
+<body>
+    <h1>Color Predictor</h1>
+    <form id="imageForm" method="post" enctype="multipart/form-data" action="/predict">
+        Select image: <input type="file" name="file" accept="image/*"><br>
+        <button type="submit">Predict</button>
+    </form>
+    <div id="result"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#imageForm').submit(function(e){
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                url: '/predict',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    $('#result').text('Predicted Color: ' + response.result);
+                }
+            });
+        });
+    });
+</script>
+</html>
