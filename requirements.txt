@@ -1,5 +1,0 @@
-gunicorn
-Flask
-tensorflow
-numpy
-colorthief
